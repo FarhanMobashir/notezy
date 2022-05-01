@@ -8,12 +8,20 @@ const noteSchema = new mongoose.Schema(
       trim: true,
       maxlength: 50,
     },
-    body: {
+    description: {
       type: String,
       required: true,
     },
-    color: {
+    styles: {
       type: String,
+      required: true,
+    },
+    isEdit: {
+      type: Boolean,
+      required: true,
+    },
+    isPinned: {
+      type: Boolean,
       required: true,
     },
     tag: {
