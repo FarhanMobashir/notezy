@@ -2,13 +2,24 @@ import mongoose from "mongoose";
 
 const noteSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
       trim: true,
       maxlength: 50,
     },
-    notes: String,
+    body: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: String,
+      required: true,
+    },
+    tag: {
+      type: String,
+      required: true,
+    },
     createdBy: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: "user",
