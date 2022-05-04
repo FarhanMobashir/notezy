@@ -25,7 +25,7 @@ export const signup = async (req, res) => {
     const user = await User.create(req.body);
     console.log(user);
     const token = newToken(user);
-    return res.status(201).send({ token });
+    return res.status(201).send({ token, user });
   } catch (e) {
     return res.status(500).json({ message: "User already exists" }).end();
   }
@@ -53,7 +53,7 @@ export const signin = async (req, res) => {
     }
 
     const token = newToken(user);
-    return res.status(201).send({ token });
+    return res.status(201).send({ token, user });
   } catch (e) {
     console.error(e);
     res.status(500).end();
