@@ -51,10 +51,11 @@ export const updateOne = (model) => async (req, res) => {
       )
       .lean()
       .exec();
+    const _doc = await model.find({ createdBy: req.user._id });
     if (!updatedDoc) {
       return res.status(400).end();
     }
-    res.status(200).json({ data: updatedDoc });
+    res.status(200).json({ data: _doc });
   } catch (err) {
     console.error(err);
     res.status(400).end();
