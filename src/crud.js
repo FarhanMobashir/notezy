@@ -71,7 +71,8 @@ export const removeOne = (model) => async (req, res) => {
     if (!removed) {
       return res.status(400).end();
     }
-    return res.status(200).json({ data: removed });
+    const _doc = await model.find({ createdBy: req.user._id });
+    return res.status(200).json({ data: _doc });
   } catch (err) {}
 };
 
