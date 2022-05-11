@@ -24,7 +24,7 @@ export const signup = async (req, res) => {
     const user = await User.create(req.body);
     console.log(user);
     const token = newToken(user);
-    return res.status(201).send({ token, user });
+    return res.status(201).send({ token, loggedUser: user.name });
   } catch (e) {
     return res.status(500).json({ message: "User already exists" }).end();
   }
@@ -39,7 +39,7 @@ export const signin = async (req, res) => {
 
   try {
     const user = await User.findOne({ email: req.body.email })
-      .select("email password")
+      .select("name email password")
       .exec();
     if (!user) {
       return res.status(401).send(invalid);
@@ -52,7 +52,8 @@ export const signin = async (req, res) => {
     }
 
     const token = newToken(user);
-    return res.status(201).send({ token, user });
+    console.log(user);
+    return res.status(201).send({ token, loggedUser: user.name });
   } catch (e) {
     console.error(e);
     res.status(500).end();
