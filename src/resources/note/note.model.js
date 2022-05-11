@@ -10,7 +10,7 @@ const noteSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    styles: {
+    bgColor: {
       type: String,
       required: true,
     },
