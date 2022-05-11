@@ -17,7 +17,6 @@ export const verifyToken = (token) => {
 };
 
 export const signup = async (req, res) => {
-  console.log(req.body);
   if (!req.body.email || !req.body.password) {
     return res.status(400).send({ message: "need email and password" });
   }
