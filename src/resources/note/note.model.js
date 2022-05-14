@@ -26,6 +26,10 @@ const noteSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    priority: {
+      type: Number,
+      required: true,
+    },
     createdBy: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: "user",
