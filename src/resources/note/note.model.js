@@ -30,6 +30,14 @@ const noteSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    isArchive: {
+      type: Boolean,
+      required: true,
+    },
+    isTemporarilyDeleted: {
+      type: Boolean,
+      required: true,
+    },
     createdBy: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: "user",
